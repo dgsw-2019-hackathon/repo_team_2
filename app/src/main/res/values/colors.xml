@@ -4,5 +4,6 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="black">#000000</color>
+    <color name="gray">#E4E4E4</color>
     <color name="list_shadow">#0D000000</color>
 </resources>

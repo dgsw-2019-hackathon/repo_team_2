@@ -6,4 +6,135 @@
     android:layout_height="match_parent"
     tools:context=".Page.activity.AddChildActivity">
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="20dp"
+        android:text="실종아동 등록"
+        android:textColor="@color/black"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText" />
+
+    <ImageView
+        android:id="@+id/titleBar2"
+        android:layout_width="80dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/title_color_box"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/add_child_image"
+        android:layout_width="136dp"
+        android:layout_height="162dp"
+        android:src="@drawable/child_image"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="40dp"
+        tools:layout_editor_absoluteY="76dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름"
+        android:textColor="#000"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="99dp" />
+
+    <EditText
+        android:id="@+id/add_child_nameText"
+        android:layout_width="169dp"
+        android:layout_height="28dp"
+        android:background="@drawable/text_border_gray"
+        android:hint="입력"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="192dp"
+        tools:layout_editor_absoluteY="129dp" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="64dp"
+        android:text="나이"
+        android:textColor="#000"
+        app:layout_constraintEnd_toStartOf="@+id/textView4"
+        app:layout_constraintHorizontal_bias="0.727"
+        app:layout_constraintStart_toEndOf="@+id/add_child_image"
+        app:layout_constraintTop_toBottomOf="@+id/add_child_nameText"
+        tools:ignore="MissingConstraints" />
+
+    <Spinner
+        android:id="@+id/ageSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintTop_toBottomOf="@+id/textView5"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="192dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="100dp"
+        android:text="성별"
+        android:textColor="#000"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="173dp" />
+
+    <Button
+        android:id="@+id/manButton"
+        android:layout_width="33dp"
+        android:layout_height="35dp"
+        android:text="남"
+        android:textSize="5pt"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="285dp"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <Button
+        android:id="@+id/womanButton"
+        android:layout_width="33dp"
+        android:layout_height="35dp"
+        android:text="여"
+        android:textSize="5pt"
+        app:layout_constraintStart_toEndOf="@+id/manButton"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="204dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="보호자 전화번호"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@+id/add_child_image"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <EditText
+        android:id="@+id/parentPhoneNumber"
+        android:layout_width="162dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/text_border_gray"
+        app:layout_constraintTop_toBottomOf="@+id/textView6"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="40dp" />
+
+
+
 </android.support.constraint.ConstraintLayout>
