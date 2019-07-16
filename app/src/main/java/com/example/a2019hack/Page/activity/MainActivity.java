@@ -1,7 +1,9 @@
-package com.example.a2019hack;
+package com.example.a2019hack.Page.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.a2019hack.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,8 +12,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        int a = 1;
-        int b = 1;
-        int c = 1;
+
     }
 }
