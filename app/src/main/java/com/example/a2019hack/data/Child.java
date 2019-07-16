@@ -3,13 +3,25 @@ package com.example.a2019hack.data;
 public class Child {
 
     private int childPhoto;
-    private int childWeight;
-    private int childHeight;
+
+    private String childWeight;
+    private String childHeight;
 
     private String childName;
     private String childSex;
     private String childPlace;
     private String childAge;
+
+    public Child(int childPhoto, String childName, String childSex, String childPlace, String childAge, String childHeight, String childWeight) {
+
+        this.childPhoto = childPhoto;
+        this.childName = childName;
+        this.childSex = childSex;
+        this.childAge = childAge;
+        this.childPlace = childPlace;
+        this.childHeight = childHeight;
+        this.childWeight = childWeight;
+    }
 
     public int getChildPhoto() {
 
@@ -21,24 +33,24 @@ public class Child {
         this.childPhoto = childPhoto;
     }
 
-    public int getChildWeight() {
-
-        return childWeight;
-    }
-
-    public void setChildWeight(int childWeight) {
-
-        this.childWeight = childWeight;
-    }
-
-    public int getChildHeight() {
+    public String getChildHeight() {
 
         return childHeight;
     }
 
-    public void setChildHeight(int childHeight) {
+    public void setChildHeight(String childHeight) {
 
         this.childHeight = childHeight;
+    }
+
+    public String getChildWeight() {
+
+        return childWeight;
+    }
+
+    public void setChildWeight(String childWeight) {
+
+        this.childWeight = childWeight;
     }
 
     public String getChildName() {

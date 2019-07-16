@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a2019hack.R;
@@ -13,12 +14,12 @@ import com.example.a2019hack.data.Child;
 
 import java.util.List;
 
-public class childListviewAdapter extends BaseAdapter {
+public class ChildListviewAdapter extends BaseAdapter {
 
     private Context context;
     private List<Child> childList;
 
-    public childListviewAdapter(Context context, List<Child> childList) {
+    public ChildListviewAdapter(Context context, List<Child> childList) {
 
         this.context = context;
         this.childList = childList;
@@ -50,6 +51,7 @@ public class childListviewAdapter extends BaseAdapter {
 
         final Child child = childList.get(position);
 
+        final ImageView childPhoto = convertView.findViewById(R.id.childPhoto);
         final TextView childName = convertView.findViewById(R.id.childName);
         final TextView childSex = convertView.findViewById(R.id.childSex);
         final TextView childAge = convertView.findViewById(R.id.childAge);
@@ -57,6 +59,7 @@ public class childListviewAdapter extends BaseAdapter {
         final TextView childHeight = convertView.findViewById(R.id.childHeight);
         final TextView childWeight = convertView.findViewById(R.id.childWeight);
 
+        childPhoto.setImageResource(R.drawable.child_image);
         childName.setText(child.getChildName());
         childSex.setText(child.getChildSex());
         childAge.setText(child.getChildAge());
