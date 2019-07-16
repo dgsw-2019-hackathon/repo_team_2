@@ -1,5 +1,15 @@
 package com.example.a2019hack.Page.activity;
 
+import android.Manifest;
+import android.app.Activity;
+import android.content.Intent;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.os.Environment;
+import android.provider.MediaStore;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,7 +27,11 @@ import com.example.a2019hack.data.Child;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AddChildActivity extends AppCompatActivity {
 
@@ -84,6 +98,8 @@ public class AddChildActivity extends AppCompatActivity {
             tedPermission();
         });
 
+
+
         confirm.setOnClickListener(I -> {
             if(name.equals("") || call.equals("") || ageSpinner.getSelectedItem().equals("")){
                 Toast toast = Toast.makeText(getApplicationContext(), "필수 입력란을 채워주세요.", Toast.LENGTH_LONG);
@@ -111,7 +127,29 @@ public class AddChildActivity extends AppCompatActivity {
 
         TedPermission.with(this)
                 .setPermissionListener(permissionListener)
-                .setRationaleMessage(getResources().getString(R.string.))
+                .setRationaleMessage(getResources().getString(R.string.permission_2))
+                .setDeniedMessage(getResources().getString(R.string.permission_1))
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .check();
     }
+
+    // 이미지 Uri 가져오기
+    private String getImageUri(Uri contentUri){
+        String result;
+        Cursor cursor = getContentResolver().query(contentUri, null, null, null, null);
+
+        if(cursor == null){
+            result = contentUri.getPath();
+        } else {
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+
+        return result;
+    }
+
+
 
 }
