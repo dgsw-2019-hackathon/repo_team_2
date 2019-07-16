@@ -1,12 +1,14 @@
 package com.example.a2019hack.Page.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.a2019hack.R;
+
 
 public class RegisterActivity extends AppCompatActivity {
 
