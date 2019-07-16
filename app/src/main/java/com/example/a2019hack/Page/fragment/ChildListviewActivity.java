@@ -1,6 +1,7 @@
 package com.example.a2019hack.Page.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 
+import com.example.a2019hack.Page.activity.ShowChildInfo;
 import com.example.a2019hack.R;
 import com.example.a2019hack.adapter.ChildFindListviewAdapter;
 import com.example.a2019hack.data.Child;
@@ -118,12 +120,27 @@ public class ChildListviewActivity extends Fragment {
 
         childListView.setAdapter(childFindListviewAdapter);
 
-        childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        childListView.setOnItemClickListener((parent, view, position, id) -> {
 
+            Intent intent = new Intent(getContext().getApplicationContext(), ShowChildInfo.class);
 
-            }
+            String childImage = childList.get(0).toString();
+            String childName = childList.get(1).toString();
+            String childSex = childList.get(2).toString();
+            String childPlace = childList.get(3).toString();
+            String childAge = childList.get(4).toString();
+            String childHeight = childList.get(5).toString();
+            String childWeight = childList.get(6).toString();
+
+            intent.putExtra("childImage", childImage);
+            intent.putExtra("childName", childName);
+            intent.putExtra("childSex", childSex);
+            intent.putExtra("childPlace", childPlace);
+            intent.putExtra("childAge", childAge);
+            intent.putExtra("childHeight", childHeight);
+            intent.putExtra("childWeight", childWeight);
+
+            startActivityForResult(intent, 1000);
         });
     }
 

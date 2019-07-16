@@ -14,23 +14,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <activity android:name=".Page.activity.ShowChildInfo">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".Page.activity.AddChildActivity" />
         <activity android:name=".Page.activity.RegisterActivity" />
         <activity android:name=".Page.activity.LoginActivity" />
         <activity android:name=".Page.activity.MainActivity">
 
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyCDG63TH-uOqSvb7Do6pWCIRdLr7EBo5kA" />
-
+            android:value="AIzaSyDmQiBY4kSg6jMXYClnG_JxiXclkKFFauE"/>
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
 </manifest>
