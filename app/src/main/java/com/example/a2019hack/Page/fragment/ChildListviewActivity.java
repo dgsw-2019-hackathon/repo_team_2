@@ -142,6 +142,7 @@ public class ChildListviewActivity extends Fragment {
 //            intent.putExtra("childWeight", childWeight);
 //
 //            startActivityForResult(intent, 1000);
+
             startActivity(intent);
         });
     }

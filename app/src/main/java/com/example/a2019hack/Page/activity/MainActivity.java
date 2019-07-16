@@ -1,13 +1,10 @@
 package com.example.a2019hack.Page.activity;
 
-import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
@@ -27,6 +24,11 @@ public class MainActivity extends AppCompatActivity {
     private ImageView searchButton;
     private ImageView peopleButton;
 
+    private TextView listButtonText;
+    private TextView plusButtonText;
+    private TextView searchButtonText;
+    private TextView peopleButtonText;
+
     FragmentManager fragmentManager = getSupportFragmentManager();
 
     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -36,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initData();
+
+        setting();
+
+        event();
+    }
+
+    private void initData() {
+
         changeFindButton = findViewById(R.id.changeFindButton);
         changeProtectButton = findViewById(R.id.changeProtectButton);
 
@@ -44,34 +55,105 @@ public class MainActivity extends AppCompatActivity {
         searchButton = findViewById(R.id.searchButton);
         peopleButton = findViewById(R.id.peopleButton);
 
+        listButtonText = findViewById(R.id.listButtonText);
+        plusButtonText = findViewById(R.id.plusButtonText);
+        searchButtonText = findViewById(R.id.searchButtonText);
+        peopleButtonText = findViewById(R.id.peopleButtonText);
+
         fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
         fragmentTransaction.commit();
+    }
+
+    private void setting() {
 
         changeFindButton.setVisibility(View.VISIBLE);
         changeFindButton.setEnabled(true);
 
         changeProtectButton.setVisibility(View.INVISIBLE);
         changeProtectButton.setEnabled(false);
+    }
+
+    private void event() {
+
+        clickEvent();
+    }
+
+    private void clickEvent() {
+
+        clickListButton();
+        clickPlusButton();
+        clickSearchButton();
+        clickPeopleButton();
+
+        clickChangeFindButton();
+        clickChangeProtectButton();
+    }
+
+    private void clickListButton() {
 
         listButton.setOnClickListener(v -> {
 
-            Toast.makeText(getApplicationContext(), "listButton", Toast.LENGTH_SHORT).show();
+            listButton.setImageDrawable(getResources().getDrawable(R.drawable.list_act));
+            plusButton.setImageDrawable(getResources().getDrawable(R.drawable.plus));
+            searchButton.setImageDrawable(getResources().getDrawable(R.drawable.search_2));
+            peopleButton.setImageDrawable(getResources().getDrawable(R.drawable.people));
+
+            listButtonText.setVisibility(View.VISIBLE);
+            plusButtonText.setVisibility(View.INVISIBLE);
+            searchButtonText.setVisibility(View.INVISIBLE);
+            peopleButtonText.setVisibility(View.INVISIBLE);
         });
+    }
+
+    private void clickPlusButton() {
 
         plusButton.setOnClickListener(v -> {
 
-            Toast.makeText(getApplicationContext(), "plusButton", Toast.LENGTH_SHORT).show();
+            listButton.setImageDrawable(getResources().getDrawable(R.drawable.list));
+            plusButton.setImageDrawable(getResources().getDrawable(R.drawable.plus_act));
+            searchButton.setImageDrawable(getResources().getDrawable(R.drawable.search_2));
+            peopleButton.setImageDrawable(getResources().getDrawable(R.drawable.people));
+
+            listButtonText.setVisibility(View.INVISIBLE);
+            plusButtonText.setVisibility(View.VISIBLE);
+            searchButtonText.setVisibility(View.INVISIBLE);
+            peopleButtonText.setVisibility(View.INVISIBLE);
         });
+    }
+
+    private void clickSearchButton() {
 
         searchButton.setOnClickListener(v -> {
 
-            Toast.makeText(getApplicationContext(), "searchButton", Toast.LENGTH_SHORT).show();
+            listButton.setImageDrawable(getResources().getDrawable(R.drawable.list));
+            plusButton.setImageDrawable(getResources().getDrawable(R.drawable.plus));
+            searchButton.setImageDrawable(getResources().getDrawable(R.drawable.search_2_act));
+            peopleButton.setImageDrawable(getResources().getDrawable(R.drawable.people));
+
+            listButtonText.setVisibility(View.INVISIBLE);
+            plusButtonText.setVisibility(View.INVISIBLE);
+            searchButtonText.setVisibility(View.VISIBLE);
+            peopleButtonText.setVisibility(View.INVISIBLE);
         });
+    }
+
+    private void clickPeopleButton() {
 
         peopleButton.setOnClickListener(v -> {
 
-            Toast.makeText(getApplicationContext(), "peopleButton", Toast.LENGTH_SHORT).show();
+            listButton.setImageDrawable(getResources().getDrawable(R.drawable.list));
+            plusButton.setImageDrawable(getResources().getDrawable(R.drawable.plus));
+            searchButton.setImageDrawable(getResources().getDrawable(R.drawable.search_2));
+            peopleButton.setImageDrawable(getResources().getDrawable(R.drawable.people_act));
+
+            listButtonText.setVisibility(View.INVISIBLE);
+            plusButtonText.setVisibility(View.INVISIBLE);
+            searchButtonText.setVisibility(View.INVISIBLE);
+            peopleButtonText.setVisibility(View.VISIBLE);
         });
+    }
+
+    private void clickChangeFindButton() {
 
         changeFindButton.setOnClickListener(v -> {
 
@@ -88,6 +170,9 @@ public class MainActivity extends AppCompatActivity {
             fragmentTransaction.replace(R.id.fragment, new ChildProtectListviewActivity());
             fragmentTransaction.commit();
         });
+    }
+
+    private void clickChangeProtectButton() {
 
         changeProtectButton.setOnClickListener(v -> {
 
