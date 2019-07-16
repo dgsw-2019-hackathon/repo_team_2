@@ -19,24 +19,24 @@ import java.util.List;
 public class ChildProtectListviewAdapter extends BaseAdapter {
 
     private Context context;
-    private List<ChildProtect> childList;
+    private List<ChildProtect> childProtectList;
 
-    public ChildProtectListviewAdapter(Context context, ArrayList<ChildProtect> childList) {
+    public ChildProtectListviewAdapter(Context context, ArrayList<ChildProtect> childProtectList) {
 
         this.context = context;
-        this.childList = childList;
+        this.childProtectList = childProtectList;
     }
 
     @Override
     public int getCount() {
 
-        return childList.size();
+        return childProtectList.size();
     }
 
     @Override
     public Object getItem(int position) {
 
-        return childList.get(position);
+        return childProtectList.get(position);
     }
 
     @Override
@@ -51,7 +51,7 @@ public class ChildProtectListviewAdapter extends BaseAdapter {
 
         convertView = LayoutInflater.from(context).inflate(R.layout.child_protect_listview_item, parent, false);
 
-        final ChildProtect childProtect = childList.get(position);
+        final ChildProtect childProtect = childProtectList.get(position);
 
         final ImageView childPhoto = convertView.findViewById(R.id.childPhoto);
         final TextView childName = convertView.findViewById(R.id.childName);
