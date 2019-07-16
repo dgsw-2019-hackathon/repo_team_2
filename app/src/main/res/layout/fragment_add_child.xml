@@ -171,6 +171,7 @@
             android:textColor="#fff"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/detailContents"
+            app:layout_constraintHorizontal_bias="0.501"
             app:layout_constraintStart_toStartOf="@+id/detailContents"
             app:layout_constraintTop_toBottomOf="@+id/detailContents"
             tools:ignore="HardcodedText,MissingConstraints" />
@@ -179,13 +180,14 @@
             android:id="@+id/placeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="40dp"
             android:text="실종 위치"
             android:textColor="#000"
             android:textSize="8pt"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/parentPhoneNumber"
+            app:layout_constraintEnd_toEndOf="@+id/heightAndWeight"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/heightAndWeight"
+            app:layout_constraintTop_toBottomOf="@+id/heightAndWeight"
             tools:ignore="HardcodedText,MissingConstraints" />
 
         <EditText
@@ -196,6 +198,8 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="30dp"
             android:background="@drawable/text_border_gray"
+            android:hint="입력"
+            android:textColor="#000"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/placeText"
@@ -218,14 +222,29 @@
         <EditText
             android:id="@+id/detailContents"
             android:layout_width="350dp"
-            android:layout_height="66dp"
+            android:layout_height="200dp"
             android:layout_marginTop="12dp"
-            android:hint="신체 특징, 실종 시간 등을 작성"
-            app:layout_constraintEnd_toEndOf="@+id/contentsText"
             android:background="@drawable/text_border_gray"
+            android:hint="신체 특징, 실종 시간 등을 작성"
+            android:textColor="#000"
+            app:layout_constraintEnd_toEndOf="@+id/contentsText"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/contentsText"
             app:layout_constraintTop_toBottomOf="@+id/contentsText"
+            tools:ignore="MissingConstraints" />
+
+        <TextView
+            android:id="@+id/heightAndWeight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="키 / 몸무게"
+            android:textColor="#000"
+            android:textSize="8pt"
+            app:layout_constraintEnd_toEndOf="@+id/parentPhoneNumber"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/parentPhoneNumber"
+            app:layout_constraintTop_toBottomOf="@+id/parentPhoneNumber"
             tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
