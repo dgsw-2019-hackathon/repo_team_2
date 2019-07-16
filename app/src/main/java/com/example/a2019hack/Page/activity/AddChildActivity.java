@@ -58,14 +58,14 @@ public class AddChildActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
 
-        final Spinner ageSpinner = (Spinner) findViewById(R.id.ageSpinner);
-        image = (ImageView) findViewById(R.id.add_child_image);
-        Button manBtn = (Button) findViewById(R.id.manButton);
-        Button womanBtn = (Button) findViewById(R.id.womanButton);
-        Button confirm = (Button) findViewById(R.id.confirmAdd);
-        EditText childName = (EditText) findViewById(R.id.add_child_nameText);
-        EditText callNumber = (EditText) findViewById(R.id.parentPhoneNumber);
-        EditText missingPlace = (EditText) findViewById(R.id.missingLocation);
+        final Spinner ageSpinner = findViewById(R.id.ageSpinner);
+        image = findViewById(R.id.add_child_image);
+        Button manBtn = findViewById(R.id.manButton);
+        Button womanBtn = findViewById(R.id.womanButton);
+        Button confirm = findViewById(R.id.confirmAdd);
+        EditText childName = findViewById(R.id.add_child_nameText);
+        EditText callNumber = findViewById(R.id.parentPhoneNumber);
+        EditText missingPlace = findViewById(R.id.missingLocation);
 
         name = childName.getText().toString();
         call = callNumber.getText().toString();
