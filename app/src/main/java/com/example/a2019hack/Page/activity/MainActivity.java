@@ -37,32 +37,26 @@ public class MainActivity extends AppCompatActivity {
         changeProtectButton.setVisibility(View.INVISIBLE);
         changeProtectButton.setEnabled(false);
 
-        changeFindButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        changeFindButton.setOnClickListener(v -> {
 
-                changeFindButton.setVisibility(View.INVISIBLE);
-                changeFindButton.setEnabled(false);
+            changeFindButton.setVisibility(View.INVISIBLE);
+            changeFindButton.setEnabled(false);
 
-                changeProtectButton.setVisibility(View.VISIBLE);
-                changeProtectButton.setEnabled(true);
+            changeProtectButton.setVisibility(View.VISIBLE);
+            changeProtectButton.setEnabled(true);
 
-                fragmentTransaction.replace(R.id.fragment, new ChildProtectListviewActivity());
-            }
+            fragmentTransaction.replace(R.id.fragment, new ChildProtectListviewActivity());
         });
 
-        changeProtectButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
+        changeProtectButton.setOnClickListener(v -> {
 
-                changeFindButton.setVisibility(View.VISIBLE);
-                changeFindButton.setEnabled(true);
+            changeFindButton.setVisibility(View.VISIBLE);
+            changeFindButton.setEnabled(true);
 
-                changeProtectButton.setVisibility(View.INVISIBLE);
-                changeProtectButton.setEnabled(false);
+            changeProtectButton.setVisibility(View.INVISIBLE);
+            changeProtectButton.setEnabled(false);
 
-                fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
-            }
+            fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
         });
     }
 }
