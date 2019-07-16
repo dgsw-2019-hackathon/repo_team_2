@@ -13,6 +13,7 @@ import android.widget.ListView;
 
 import com.example.a2019hack.R;
 import com.example.a2019hack.adapter.ChildFindListviewAdapter;
+import com.example.a2019hack.adapter.ChildProtectListviewAdapter;
 import com.example.a2019hack.data.Child;
 import com.example.a2019hack.data.ChildProtect;
 
@@ -23,19 +24,19 @@ import java.util.Objects;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ChildListviewActivity.OnFragmentInteractionListener} interface
+ * {@link ChildProtectListviewActivity.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ChildListviewActivity#newInstance} factory method to
+ * Use the {@link ChildProtectListviewActivity#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ChildListviewActivity extends Fragment {
+public class ChildProtectListviewActivity extends Fragment {
 
     private ListView childListView;
-    private ChildFindListviewAdapter childFindListviewAdapter;
+    private ChildProtectListviewAdapter childProtectListviewAdapter;
 
-    private ArrayList<Child> childList;
+    private ArrayList<ChildProtect> childListProtect;
 
-    //----------------------------------------------------------
+    //--------------------------------------------------------------
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -48,7 +49,7 @@ public class ChildListviewActivity extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public ChildListviewActivity() {
+    public ChildProtectListviewActivity() {
         // Required empty public constructor
     }
 
@@ -58,11 +59,11 @@ public class ChildListviewActivity extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ChildListviewActivity.
+     * @return A new instance of fragment ChildProtectListviewActivity.
      */
     // TODO: Rename and change types and number of parameters
-    public static ChildListviewActivity newInstance(String param1, String param2) {
-        ChildListviewActivity fragment = new ChildListviewActivity();
+    public static ChildProtectListviewActivity newInstance(String param1, String param2) {
+        ChildProtectListviewActivity fragment = new ChildProtectListviewActivity();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -83,40 +84,47 @@ public class ChildListviewActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_child_find_listview, container, false);
+        return inflater.inflate(R.layout.fragment_child_protect_listview, container, false);
     }
 
-    //-----------------------------------------------------------------
+    // TODO: Rename method, update argument and hook method into UI event
+    public void onButtonPressed(Uri uri) {
+        if (mListener != null) {
+            mListener.onFragmentInteraction(uri);
+        }
+    }
+
+    //--------------------------------------------------------------
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        childList = new ArrayList<>();
+        childListProtect = new ArrayList<>();
 
         childListView = getView().findViewById(R.id.childListview);
 
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
+        childListProtect.add(new ChildProtect(
+                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
 
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
+        childListProtect.add(new ChildProtect(
+                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
 
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
+        childListProtect.add(new ChildProtect(
+                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
 
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
+        childListProtect.add(new ChildProtect(
+                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
 
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
+        childListProtect.add(new ChildProtect(
+                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
 
 
-        Collections.reverse(childList);
+        Collections.reverse(childListProtect);
 
-        childFindListviewAdapter = new ChildFindListviewAdapter(Objects.requireNonNull(getContext()).getApplicationContext(), childList);
+        childProtectListviewAdapter = new ChildProtectListviewAdapter(getContext().getApplicationContext(), childListProtect);
 
-        childListView.setAdapter(childFindListviewAdapter);
+        childListView.setAdapter(childProtectListviewAdapter);
 
         childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -127,14 +135,7 @@ public class ChildListviewActivity extends Fragment {
         });
     }
 
-    //-----------------------------------------------------------------
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
+    //--------------------------------------------------------------
 
     @Override
     public void onAttach(Context context) {

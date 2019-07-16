@@ -6,4 +6,6 @@
     <color name="black">#000000</color>
     <color name="gray">#E4E4E4</color>
     <color name="list_shadow">#0D000000</color>
+    <color name="find_button">#FFDCDC</color>
+    <color name="protect_button">#DEE0FF</color>
 </resources>

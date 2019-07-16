@@ -14,12 +14,12 @@ import com.example.a2019hack.data.Child;
 
 import java.util.List;
 
-public class ChildListviewAdapter extends BaseAdapter {
+public class ChildFindListviewAdapter extends BaseAdapter {
 
     private Context context;
     private List<Child> childList;
 
-    public ChildListviewAdapter(Context context, List<Child> childList) {
+    public ChildFindListviewAdapter(Context context, List<Child> childList) {
 
         this.context = context;
         this.childList = childList;
@@ -47,7 +47,7 @@ public class ChildListviewAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
-        convertView = LayoutInflater.from(context).inflate(R.layout.child_listview_item, parent, false);
+        convertView = LayoutInflater.from(context).inflate(R.layout.child_find_listview_item, parent, false);
 
         final Child child = childList.get(position);
 

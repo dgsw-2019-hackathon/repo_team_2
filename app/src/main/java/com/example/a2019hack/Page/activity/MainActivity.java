@@ -1,61 +1,63 @@
 package com.example.a2019hack.Page.activity;
 
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.Button;
 
+import com.example.a2019hack.Page.fragment.ChildListviewActivity;
+import com.example.a2019hack.Page.fragment.ChildProtectListviewActivity;
 import com.example.a2019hack.R;
-import com.example.a2019hack.adapter.ChildListviewAdapter;
-import com.example.a2019hack.data.Child;
-
-import java.util.ArrayList;
-import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ListView childListView;
-    private ChildListviewAdapter childListviewAdapter;
+    private Button changeFindButton;
+    private Button changeProtectButton;
 
-    private ArrayList<Child> childList;
+    FragmentManager fragmentManager = getSupportFragmentManager();
+
+    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        childList = new ArrayList<>();
+        changeFindButton = findViewById(R.id.changeFindButton);
+        changeProtectButton = findViewById(R.id.changeProtectButton);
 
-        childListView = findViewById(R.id.childListView);
+        fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
+        fragmentTransaction.commit();
 
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-
-        Collections.reverse(childList);
-
-        childListviewAdapter = new ChildListviewAdapter(this, childList);
-
-        childListView.setAdapter(childListviewAdapter);
-
-        childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        changeFindButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onClick(View v) {
 
+                changeFindButton.setVisibility(View.INVISIBLE);
+                changeFindButton.setEnabled(false);
 
+                changeProtectButton.setEnabled(true);
+                changeProtectButton.setVisibility(View.VISIBLE);
+
+                fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
+                fragmentTransaction.commit();
+            }
+        });
+
+        changeProtectButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                changeFindButton.setVisibility(View.VISIBLE);
+                changeFindButton.setEnabled(true);
+
+                changeProtectButton.setEnabled(false);
+                changeProtectButton.setVisibility(View.INVISIBLE);
+
+                fragmentTransaction.replace(R.id.fragment, new ChildProtectListviewActivity());
+                fragmentTransaction.commit();
             }
         });
     }
