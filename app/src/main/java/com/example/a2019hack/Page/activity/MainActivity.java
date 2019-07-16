@@ -40,6 +40,10 @@ public class MainActivity extends AppCompatActivity {
 
         changeFindButton.setOnClickListener(v -> {
 
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
             changeFindButton.setVisibility(View.INVISIBLE);
             changeFindButton.setEnabled(false);
 
@@ -47,9 +51,14 @@ public class MainActivity extends AppCompatActivity {
             changeProtectButton.setEnabled(true);
 
             fragmentTransaction.replace(R.id.fragment, new ChildProtectListviewActivity());
+            fragmentTransaction.commit();
         });
 
         changeProtectButton.setOnClickListener(v -> {
+
+            FragmentManager fragmentManager = getSupportFragmentManager();
+
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
             changeFindButton.setVisibility(View.VISIBLE);
             changeFindButton.setEnabled(true);
@@ -58,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
             changeProtectButton.setEnabled(false);
 
             fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
+            fragmentTransaction.commit();
         });
     }
 }

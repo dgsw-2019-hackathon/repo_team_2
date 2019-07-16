@@ -86,10 +86,10 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/protect_button_radius"
+        android:clickable="false"
         android:text="보호중"
         android:textStyle="bold"
         android:visibility="invisible"
-        android:clickable="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleBar"
         tools:ignore="HardcodedText" />

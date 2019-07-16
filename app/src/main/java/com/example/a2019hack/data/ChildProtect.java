@@ -2,94 +2,96 @@ package com.example.a2019hack.data;
 
 public class ChildProtect {
 
-    private int childPhoto;
+    private int childProtectPhoto;
 
-    private String childWeight;
-    private String childHeight;
+    private String childProtectWeight;
+    private String childProtectHeight;
 
-    private String childName;
-    private String childSex;
-    private String childPlace;
-    private String childAge;
+    private String childProtectName;
+    private String childProtectSex;
+    private String childProtectPlace;
+    private String childProtectAge;
 
-    public ChildProtect(int childPhoto, String childName, String childSex, String childPlace, String childAge, String childHeight, String childWeight) {
+    public ChildProtect(
+            int childProtectPhoto, String childProtectName, String childProtectSex, String childProtectPlace,
+            String childProtectAge, String childProtectHeight, String childProtectWeight) {
 
-        this.childPhoto = childPhoto;
-        this.childName = childName;
-        this.childSex = childSex;
-        this.childAge = childAge;
-        this.childPlace = childPlace;
-        this.childHeight = childHeight;
-        this.childWeight = childWeight;
+        this.childProtectPhoto = childProtectPhoto;
+        this.childProtectName = childProtectName;
+        this.childProtectSex = childProtectSex;
+        this.childProtectAge = childProtectAge;
+        this.childProtectPlace = childProtectPlace;
+        this.childProtectHeight = childProtectHeight;
+        this.childProtectWeight = childProtectWeight;
     }
 
-    public int getChildPhoto() {
+    public int getChildProtectPhoto() {
 
-        return childPhoto;
+        return childProtectPhoto;
     }
 
-    public void setChildPhoto(int childPhoto) {
+    public void setChildProtectPhoto(int childProtectPhoto) {
 
-        this.childPhoto = childPhoto;
+        this.childProtectPhoto = childProtectPhoto;
     }
 
-    public String getChildHeight() {
+    public String getChildProtectHeight() {
 
-        return childHeight;
+        return childProtectHeight;
     }
 
-    public void setChildHeight(String childHeight) {
+    public void setChildProtectHeight(String childProtectHeight) {
 
-        this.childHeight = childHeight;
+        this.childProtectHeight = childProtectHeight;
     }
 
-    public String getChildWeight() {
+    public String getChildProtectWeight() {
 
-        return childWeight;
+        return childProtectWeight;
     }
 
-    public void setChildWeight(String childWeight) {
+    public void setChildProtectWeight(String childProtectWeight) {
 
-        this.childWeight = childWeight;
+        this.childProtectWeight = childProtectWeight;
     }
 
-    public String getChildName() {
+    public String getChildProtectName() {
 
-        return childName;
+        return childProtectName;
     }
 
-    public void setChildName(String childName) {
+    public void setChildProtectName(String childProtectName) {
 
-        this.childName = childName;
+        this.childProtectName = childProtectName;
     }
 
-    public String getChildSex() {
+    public String getChildProtectSex() {
 
-        return childSex;
+        return childProtectSex;
     }
 
-    public void setChildSex(String childSex) {
+    public void setChildProtectSex(String childProtectSex) {
 
-        this.childSex = childSex;
+        this.childProtectSex = childProtectSex;
     }
 
-    public String getChildPlace() {
+    public String getChildProtectPlace() {
 
-        return childPlace;
+        return childProtectPlace;
     }
 
-    public void setChildPlace(String childPlace) {
+    public void setChildProtectPlace(String childProtectPlace) {
 
-        this.childPlace = childPlace;
+        this.childProtectPlace = childProtectPlace;
     }
 
-    public String getChildAge() {
+    public String getChildProtectAge() {
 
-        return childAge;
+        return childProtectAge;
     }
 
-    public void setChildAge(String childAge) {
+    public void setChildProtectAge(String childProtectAge) {
 
-        this.childAge = childAge;
+        this.childProtectAge = childProtectAge;
     }
 }

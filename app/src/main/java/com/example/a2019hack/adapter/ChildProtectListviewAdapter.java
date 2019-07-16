@@ -61,12 +61,12 @@ public class ChildProtectListviewAdapter extends BaseAdapter {
         final TextView childWeight = convertView.findViewById(R.id.childWeight);
 
         childPhoto.setImageResource(R.drawable.child_image);
-        childName.setText(childProtect.getChildName());
-        childSex.setText(childProtect.getChildSex());
-        childAge.setText(childProtect.getChildAge());
-        childPlace.setText(childProtect.getChildPlace());
-        childHeight.setText(childProtect.getChildHeight());
-        childWeight.setText(childProtect.getChildWeight());
+        childName.setText(childProtect.getChildProtectName());
+        childSex.setText(childProtect.getChildProtectSex());
+        childAge.setText(childProtect.getChildProtectAge());
+        childPlace.setText(childProtect.getChildProtectPlace());
+        childHeight.setText(childProtect.getChildProtectHeight());
+        childWeight.setText(childProtect.getChildProtectWeight());
 
         return convertView;
     }
