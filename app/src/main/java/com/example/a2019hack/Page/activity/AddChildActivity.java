@@ -8,17 +8,21 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.a2019hack.R;
 import com.example.a2019hack.data.Child;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
+
+import java.util.ArrayList;
 
 public class AddChildActivity extends AppCompatActivity {
 
     String [] item = new String[100];
-    String name, call, sex, place, age;
-    Child childData;
+    String name, call, sex, place, age; // 저장한 데이터들
     Boolean sexToggle = false; // true = man, false = woman;
 
     @Override
@@ -27,21 +31,24 @@ public class AddChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_child);
 
         final Spinner ageSpinner = findViewById(R.id.ageSpinner);
+        ImageView image = findViewById(R.id.add_child_image);
         Button manBtn = findViewById(R.id.manButton);
         Button womanBtn = findViewById(R.id.womanButton);
         Button confirm = findViewById(R.id.confirmAdd);
         EditText childName = findViewById(R.id.add_child_nameText);
         EditText callNumber = findViewById(R.id.parentPhoneNumber);
+        EditText missingPlace = findViewById(R.id.missingLocation);
 
         name = childName.getText().toString();
         call = callNumber.getText().toString();
+        place = missingPlace.getText().toString();
 
         // 나이 콤보박스 및 선택 시 이벤트
         for(int i = 0; i < item.length; i++){
             item[i] = Integer.toString(i);
         }
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.spinner_item, item);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, item);
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
 
@@ -49,9 +56,7 @@ public class AddChildActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 age = ageSpinner.getSelectedItem().toString();
-                //childData.setChildAge(ageSpinner.getSelectedItem().toString());
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
             }
@@ -75,17 +80,38 @@ public class AddChildActivity extends AppCompatActivity {
             sex = "girl";
         });
 
+        image.setOnClickListener(I -> {
+            tedPermission();
+        });
+
         confirm.setOnClickListener(I -> {
             if(name.equals("") || call.equals("") || ageSpinner.getSelectedItem().equals("")){
                 Toast toast = Toast.makeText(getApplicationContext(), "필수 입력란을 채워주세요.", Toast.LENGTH_LONG);
                 toast.show();
-            } else {
-                childData.setChildSex(sex);
-                childData.setChildAge(age);
-                childData.setChildName(name);
+            } else { // 값이 다 채워졌으면
+
             }
         });
 
+
+    }
+
+    private void tedPermission() {
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+
+            }
+        };
+
+        TedPermission.with(this)
+                .setPermissionListener(permissionListener)
+                .setRationaleMessage(getResources().getString(R.string.))
     }
 
 }

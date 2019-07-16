@@ -35,7 +35,7 @@
         android:id="@+id/add_child_image"
         android:layout_width="136dp"
         android:layout_height="162dp"
-        android:src="@drawable/child_image"
+        android:src="@drawable/ic_launcher_foreground"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteX="40dp"
         tools:layout_editor_absoluteY="76dp" />
@@ -148,7 +148,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="462dp" />
+        tools:layout_editor_absoluteY="536dp" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="실종 위치"
+        android:textColor="#000"
+        app:layout_constraintTop_toBottomOf="@+id/parentPhoneNumber"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="40dp" />
+
+    <EditText
+        android:id="@+id/missingLocation"
+        android:layout_width="323dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/text_border_gray"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="40dp" />
 
 
 
