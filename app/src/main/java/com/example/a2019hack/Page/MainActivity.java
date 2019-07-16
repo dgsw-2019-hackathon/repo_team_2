@@ -1,4 +1,4 @@
-package com.example.a2019hack.Page.activity;
+package com.example.a2019hack.Page;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
