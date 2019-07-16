@@ -20,9 +20,9 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.a2019hack.Page.fragment.ChildListviewActivity;
 import com.example.a2019hack.R;
 import com.example.a2019hack.data.Child;
 import com.gun0912.tedpermission.PermissionListener;
@@ -36,22 +36,9 @@ import java.util.Date;
 
 public class AddChildActivity extends AppCompatActivity {
 
-    String [] item = new String[100];
+    String [] item = new String[19];
     String name, call, sex, place, age; // 저장한 데이터들
     Boolean sexToggle = false; // true = man, false = woman;
-    private final int GET_GALLERY_IMAGE = 200;
-
-    ImageView image;
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if(requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
-            Uri selecUri = data.getData();// image Uri
-            image.setImageURI(selecUri);
-        }
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +46,7 @@ public class AddChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_child);
 
         final Spinner ageSpinner = findViewById(R.id.ageSpinner);
-        image = findViewById(R.id.add_child_image);
+        ImageView image = findViewById(R.id.add_child_image);
         Button manBtn = findViewById(R.id.manButton);
         Button womanBtn = findViewById(R.id.womanButton);
         Button confirm = findViewById(R.id.confirmAdd);
@@ -67,13 +54,14 @@ public class AddChildActivity extends AppCompatActivity {
         EditText callNumber = findViewById(R.id.parentPhoneNumber);
         EditText missingPlace = findViewById(R.id.missingLocation);
 
-        name = childName.getText().toString();
-        call = callNumber.getText().toString();
-        place = missingPlace.getText().toString();
+        String setAge = " 세";
 
         // 나이 콤보박스 및 선택 시 이벤트
-        for(int i = 0; i < item.length; i++){
+        for(int i=0;i<item.length;i++) {
+
             item[i] = Integer.toString(i);
+
+            setAge = item[i] + setAge;
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, R.layout.spinner_item, item);
@@ -81,48 +69,108 @@ public class AddChildActivity extends AppCompatActivity {
         ageSpinner.setAdapter(adapter);
 
         ageSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
                 age = ageSpinner.getSelectedItem().toString();
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
 
         // sexToggle is true then man, false then woman
-        if(sexToggle){
+        if(sexToggle) {
+
             manBtn.setEnabled(true);
             womanBtn.setEnabled(false);
-        } else {
+        }
+        else {
+
             womanBtn.setEnabled(true);
             manBtn.setEnabled(false);
         }
         manBtn.setOnClickListener(I -> {
+
             sexToggle = true;
             sex = "boy";
         });
 
         womanBtn.setOnClickListener(I -> {
+
             sexToggle = false;
             sex = "girl";
         });
 
         image.setOnClickListener(I -> {
-            Intent intent = new Intent(Intent.ACTION_PICK);
-            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
-            startActivityForResult(intent, GET_GALLERY_IMAGE);
+
+            tedPermission();
         });
 
         confirm.setOnClickListener(I -> {
-            if(name.equals("") || call.equals("") || ageSpinner.getSelectedItem().equals("")){
-                Toast toast = Toast.makeText(getApplicationContext(), "필수 입력란을 채워주세요.", Toast.LENGTH_LONG);
-                toast.show();
-            } else { // 값이 다 채워졌으면
 
+            name = childName.getText().toString();
+            call = callNumber.getText().toString();
+            place = missingPlace.getText().toString();
+
+            if(name.equals("") || call.equals("") || ageSpinner.getSelectedItem().equals("")) {
+
+                Toast.makeText(getApplicationContext(), "필수 입력란을 채워주세요.", Toast.LENGTH_LONG).show();
+            }
+            else { // 값이 다 채워졌으면
+
+                Toast.makeText(getApplicationContext(), "모든 항목이 입력되었습니다.", Toast.LENGTH_LONG).show();
+
+                Intent intent = new Intent(AddChildActivity.this, ChildListviewActivity.class);
+
+                // TODO
             }
         });
     }
 
+    private void tedPermission() {
 
+        PermissionListener permissionListener = new PermissionListener() {
+            @Override
+            public void onPermissionGranted() {
+
+            }
+
+            @Override
+            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+
+            }
+        };
+
+        TedPermission.with(this)
+                .setPermissionListener(permissionListener)
+                .setRationaleMessage(getResources().getString(R.string.permission_2))
+                .setDeniedMessage(getResources().getString(R.string.permission_1))
+                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
+                .check();
+    }
+
+    // 이미지 Uri 가져오기
+    private String getImageUri(Uri contentUri) {
+
+        String result;
+        Cursor cursor = getContentResolver().query(contentUri, null, null, null, null);
+
+        if(cursor == null){
+
+            result = contentUri.getPath();
+        }
+        else {
+
+            cursor.moveToFirst();
+            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
+            result = cursor.getString(idx);
+            cursor.close();
+        }
+
+        return result;
+    }
 }

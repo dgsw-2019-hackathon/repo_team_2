@@ -18,7 +18,10 @@
 
         <activity android:name=".Page.activity.ShowChildInfo">
         </activity>
-        <activity android:name=".Page.activity.AddChildActivity" />
+        <activity android:name=".Page.activity.AddChildActivity" >
+
+        </activity>
+
         <activity android:name=".Page.activity.RegisterActivity" />
         <activity android:name=".Page.activity.LoginActivity" />
         <activity android:name=".Page.activity.MainActivity">

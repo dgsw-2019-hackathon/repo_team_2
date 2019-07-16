@@ -1,6 +1,7 @@
 package com.example.a2019hack.Page.fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -12,6 +13,7 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.a2019hack.Page.activity.ShowChildInfo;
 import com.example.a2019hack.R;
 import com.example.a2019hack.adapter.ChildFindListviewAdapter;
 import com.example.a2019hack.adapter.ChildProtectListviewAdapter;
@@ -131,7 +133,8 @@ public class ChildProtectListviewActivity extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
+                Intent intent = new Intent(getContext().getApplicationContext(), ShowChildInfo.class);
+                startActivity(intent);
             }
         });
     }
