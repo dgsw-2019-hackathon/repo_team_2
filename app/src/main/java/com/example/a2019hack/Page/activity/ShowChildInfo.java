@@ -36,7 +36,7 @@ public class ShowChildInfo extends AppCompatActivity implements OnMapReadyCallba
         FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = (MapFragment)fragmentManager
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(ShowChildInfo.this);
+        mapFragment.getMapAsync(this);
     }
 
     @Override

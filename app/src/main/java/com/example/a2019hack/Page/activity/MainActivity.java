@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        changeFindButton = (Button) findViewById(R.id.changeFindButton);
-        changeProtectButton = (Button) findViewById(R.id.changeProtectButton);
+        changeFindButton = findViewById(R.id.changeFindButton);
+        changeProtectButton = findViewById(R.id.changeProtectButton);
 
         fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
         fragmentTransaction.commit();
