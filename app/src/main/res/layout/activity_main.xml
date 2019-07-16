@@ -7,8 +7,20 @@
     android:layout_height="match_parent"
     tools:context=".Page.activity.MainActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+    </LinearLayout>
+
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -32,22 +44,26 @@
         app:srcCompat="@drawable/title_color_box"
         tools:ignore="ContentDescription" />
 
-    <ListView
-        android:id="@+id/childListView"
+    <FrameLayout
         android:layout_width="395dp"
-        android:layout_height="match_parent"
+        android:layout_height="483dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:background="#ffffff"
-        android:dividerHeight="6px"
-        android:divider="#ffffff"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleBar"
-        tools:ignore="PxUsage" />
+        tools:ignore="UselessLeaf">
+
+        <RelativeLayout
+            android:id="@+id/fragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </RelativeLayout>
+
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
