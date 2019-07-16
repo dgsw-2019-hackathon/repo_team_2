@@ -31,6 +31,12 @@ public class MainActivity extends AppCompatActivity {
         fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
         fragmentTransaction.commit();
 
+        changeFindButton.setVisibility(View.VISIBLE);
+        changeFindButton.setEnabled(true);
+
+        changeProtectButton.setVisibility(View.INVISIBLE);
+        changeProtectButton.setEnabled(false);
+
         changeFindButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -38,11 +44,10 @@ public class MainActivity extends AppCompatActivity {
                 changeFindButton.setVisibility(View.INVISIBLE);
                 changeFindButton.setEnabled(false);
 
-                changeProtectButton.setEnabled(true);
                 changeProtectButton.setVisibility(View.VISIBLE);
+                changeProtectButton.setEnabled(true);
 
-                fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
-                fragmentTransaction.commit();
+                fragmentTransaction.replace(R.id.fragment, new ChildProtectListviewActivity());
             }
         });
 
@@ -53,11 +58,10 @@ public class MainActivity extends AppCompatActivity {
                 changeFindButton.setVisibility(View.VISIBLE);
                 changeFindButton.setEnabled(true);
 
-                changeProtectButton.setEnabled(false);
                 changeProtectButton.setVisibility(View.INVISIBLE);
+                changeProtectButton.setEnabled(false);
 
-                fragmentTransaction.replace(R.id.fragment, new ChildProtectListviewActivity());
-                fragmentTransaction.commit();
+                fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
             }
         });
     }

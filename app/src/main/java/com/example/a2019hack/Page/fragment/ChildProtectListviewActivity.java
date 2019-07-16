@@ -31,7 +31,7 @@ import java.util.Objects;
  */
 public class ChildProtectListviewActivity extends Fragment {
 
-    private ListView childListView;
+    private ListView childProtectListView;
     private ChildProtectListviewAdapter childProtectListviewAdapter;
 
     private ArrayList<ChildProtect> childListProtect;
@@ -102,7 +102,7 @@ public class ChildProtectListviewActivity extends Fragment {
 
         childListProtect = new ArrayList<>();
 
-        childListView = getView().findViewById(R.id.childListview);
+        childProtectListView = getView().findViewById(R.id.childProtectListview);
 
         childListProtect.add(new ChildProtect(
                 R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
@@ -122,11 +122,11 @@ public class ChildProtectListviewActivity extends Fragment {
 
         Collections.reverse(childListProtect);
 
-        childProtectListviewAdapter = new ChildProtectListviewAdapter(getContext().getApplicationContext(), childListProtect);
+        childProtectListviewAdapter = new ChildProtectListviewAdapter(Objects.requireNonNull(getContext()).getApplicationContext(), childListProtect);
 
-        childListView.setAdapter(childProtectListviewAdapter);
+        childProtectListView.setAdapter(childProtectListviewAdapter);
 
-        childListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        childProtectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
@@ -136,17 +136,6 @@ public class ChildProtectListviewActivity extends Fragment {
     }
 
     //--------------------------------------------------------------
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
 
     @Override
     public void onDetach() {
