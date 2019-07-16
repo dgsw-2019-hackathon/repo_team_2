@@ -23,11 +23,11 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        EditText idText = findViewById(R.id.loginIdText); // ID입력창
-        EditText passwordText = findViewById(R.id.loginPasswordText); //PW입력창
-        Button loginBtn = findViewById(R.id.buttonLogin); // 로그인 버튼
-        TextView registerText = findViewById(R.id.loginGetRegister); // 회원가입 텍스트박스
-        CheckBox keepLoginBox = findViewById(R.id.keepLoginCheckBox); // 로그인유지 체크박스
+        EditText idText = (EditText) findViewById(R.id.loginIdText); // ID입력창
+        EditText passwordText = (EditText) findViewById(R.id.loginPasswordText); //PW입력창
+        Button loginBtn = (Button) findViewById(R.id.buttonLogin); // 로그인 버튼
+        TextView registerText = (TextView) findViewById(R.id.loginGetRegister); // 회원가입 텍스트박스
+        CheckBox keepLoginBox = (CheckBox) findViewById(R.id.keepLoginCheckBox); // 로그인유지 체크박스
 
         loginId = idText.getText().toString();
         loginPassword = passwordText.getText().toString();
