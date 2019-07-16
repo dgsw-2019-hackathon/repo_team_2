@@ -38,8 +38,8 @@ import java.util.ArrayList;
 public class AddChildFragment extends Fragment {
 
     String [] item = new String[19];
-    String name, call, sex, place, age; // 저장한 데이터들
-    Boolean sexToggle = false; // true = man, false = woman;
+    String name, call, place, age; // 저장한 데이터들
+    String sex = "남자";
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -104,25 +104,25 @@ public class AddChildFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         final Spinner ageSpinner = getView().findViewById(R.id.ageSpinner);
+
         ImageView image = getView().findViewById(R.id.add_child_image);
+
         Button manBtn = getView().findViewById(R.id.manButton);
         Button womanBtn = getView().findViewById(R.id.womanButton);
         Button confirm = getView().findViewById(R.id.confirmAdd);
+
         EditText childName = getView().findViewById(R.id.add_child_nameText);
         EditText callNumber = getView().findViewById(R.id.parentPhoneNumber);
         EditText missingPlace = getView().findViewById(R.id.missingLocation);
-
-        String setAge = " 세";
 
         // 나이 콤보박스 및 선택 시 이벤트
         for(int i=0;i<item.length;i++) {
 
             item[i] = Integer.toString(i);
-
-            setAge = item[i] + setAge;
         }
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext().getApplicationContext(), R.layout.spinner_item, item);
+
         adapter.setDropDownViewResource(R.layout.support_simple_spinner_dropdown_item);
         ageSpinner.setAdapter(adapter);
 
@@ -140,27 +140,26 @@ public class AddChildFragment extends Fragment {
             }
         });
 
-        // sexToggle is true then man, false then woman
-        if(sexToggle) {
-
-            manBtn.setEnabled(true);
-            womanBtn.setEnabled(false);
-        }
-        else {
-
-            womanBtn.setEnabled(true);
-            manBtn.setEnabled(false);
-        }
         manBtn.setOnClickListener(I -> {
 
-            sexToggle = true;
-            sex = "boy";
+            manBtn.setEnabled(false);
+            manBtn.setVisibility(View.INVISIBLE);
+
+            womanBtn.setEnabled(true);
+            womanBtn.setVisibility(View.VISIBLE);
+
+            sex = "여자";
         });
 
         womanBtn.setOnClickListener(I -> {
 
-            sexToggle = false;
-            sex = "girl";
+            manBtn.setEnabled(true);
+            manBtn.setVisibility(View.VISIBLE);
+
+            womanBtn.setEnabled(false);
+            womanBtn.setVisibility(View.INVISIBLE);
+
+            sex = "남자";
         });
 
         image.setOnClickListener(I -> {
@@ -184,7 +183,10 @@ public class AddChildFragment extends Fragment {
 
                 Intent intent = new Intent(getContext().getApplicationContext(), ChildListviewActivity.class);
 
-                // TODO
+                intent.putExtra("childName", name);
+                intent.putExtra("childAge", age);
+                intent.putExtra("childSex", sex);
+                intent.putExtra("phoneNumber", call);
             }
         });
     }
