@@ -49,4 +49,29 @@
 
     </androidx.appcompat.widget.SearchView>
 
+    <ImageView
+        android:id="@+id/noSearchResultImage"
+        android:layout_width="223dp"
+        android:layout_height="237dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="108dp"
+        android:layout_marginEnd="8dp"
+        android:src="@drawable/cant_search_icon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/noSearchResultText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="검색결과 없음"
+        android:textColor="#808080"
+        android:textSize="10pt"
+        app:layout_constraintEnd_toEndOf="@+id/noSearchResultImage"
+        app:layout_constraintStart_toStartOf="@+id/noSearchResultImage"
+        app:layout_constraintTop_toBottomOf="@+id/noSearchResultImage"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
