@@ -16,7 +16,7 @@
         android:textSize="20pt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
+        tools:ignore="HardcodedText,MissingConstraints"
         tools:layout_editor_absoluteY="144dp" />
 
     <EditText
@@ -31,7 +31,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
+        tools:ignore="Autofill,HardcodedText,MissingConstraints"
         tools:layout_editor_absoluteY="240dp" />
 
     <EditText
@@ -45,7 +45,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
+        tools:ignore="Autofill,HardcodedText,MissingConstraints,TextFields"
         tools:layout_editor_absoluteY="304dp" />
 
     <CheckBox
@@ -63,7 +63,8 @@
         android:layout_marginTop="4dp"
         android:text="로그인 유지"
         app:layout_constraintStart_toEndOf="@+id/keepLoginCheckBox"
-        app:layout_constraintTop_toTopOf="@+id/keepLoginCheckBox" />
+        app:layout_constraintTop_toTopOf="@+id/keepLoginCheckBox"
+        tools:ignore="HardcodedText" />
 
     <Button
         android:id="@+id/buttonLogin"
@@ -80,7 +81,7 @@
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginPasswordText"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/loginFindId"
@@ -93,7 +94,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonLogin"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/loginGetRegister"
@@ -106,8 +107,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/loginFindId"
-        tools:ignore="MissingConstraints" />
-
-
+        tools:ignore="HardcodedText,MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

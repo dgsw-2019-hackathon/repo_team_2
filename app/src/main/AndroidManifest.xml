@@ -16,9 +16,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".Page.activity.SearchActivity"></activity>
         <activity android:name=".Page.activity.ShowChildInfo"></activity>
-        <activity android:name=".Page.activity.AddChildActivity"></activity>
         <activity android:name=".Page.activity.RegisterActivity" />
         <activity android:name=".Page.activity.LoginActivity" />
         <activity android:name=".Page.activity.MainActivity">
