@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
         listButton.setOnClickListener(v -> {
 
-            
+            Toast.makeText(getApplicationContext(), "listButton", Toast.LENGTH_SHORT).show();
         });
 
         plusButton.setOnClickListener(v -> {
