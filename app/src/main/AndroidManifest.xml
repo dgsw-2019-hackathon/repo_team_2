@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".Page.activity.RegisterActivity"></activity>
+        <activity android:name=".Page.activity.AddChildActivity"></activity>
+        <activity android:name=".Page.activity.RegisterActivity" />
         <activity android:name=".Page.activity.LoginActivity" />
         <activity android:name=".Page.activity.MainActivity">
             <intent-filter>
