@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.a2019hack.R;
@@ -38,6 +39,19 @@ public class AddChildActivity extends AppCompatActivity {
     String [] item = new String[100];
     String name, call, sex, place, age; // 저장한 데이터들
     Boolean sexToggle = false; // true = man, false = woman;
+    private final int GET_GALLERY_IMAGE = 200;
+
+    ImageView image;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == GET_GALLERY_IMAGE && resultCode == RESULT_OK && data != null && data.getData() != null) {
+            Uri selecUri = data.getData();// image Uri
+            image.setImageURI(selecUri);
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +59,7 @@ public class AddChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_child);
 
         final Spinner ageSpinner = (Spinner) findViewById(R.id.ageSpinner);
-        ImageView image = (ImageView) findViewById(R.id.add_child_image);
+        image = (ImageView) findViewById(R.id.add_child_image);
         Button manBtn = (Button) findViewById(R.id.manButton);
         Button womanBtn = (Button) findViewById(R.id.womanButton);
         Button confirm = (Button) findViewById(R.id.confirmAdd);
@@ -95,10 +109,10 @@ public class AddChildActivity extends AppCompatActivity {
         });
 
         image.setOnClickListener(I -> {
-            tedPermission();
+            Intent intent = new Intent(Intent.ACTION_PICK);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
+            startActivityForResult(intent, GET_GALLERY_IMAGE);
         });
-
-
 
         confirm.setOnClickListener(I -> {
             if(name.equals("") || call.equals("") || ageSpinner.getSelectedItem().equals("")){
@@ -108,48 +122,7 @@ public class AddChildActivity extends AppCompatActivity {
 
             }
         });
-
-
     }
-
-    private void tedPermission() {
-        PermissionListener permissionListener = new PermissionListener() {
-            @Override
-            public void onPermissionGranted() {
-
-            }
-
-            @Override
-            public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-
-            }
-        };
-
-        TedPermission.with(this)
-                .setPermissionListener(permissionListener)
-                .setRationaleMessage(getResources().getString(R.string.permission_2))
-                .setDeniedMessage(getResources().getString(R.string.permission_1))
-                .setPermissions(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA)
-                .check();
-    }
-
-    // 이미지 Uri 가져오기
-    private String getImageUri(Uri contentUri){
-        String result;
-        Cursor cursor = getContentResolver().query(contentUri, null, null, null, null);
-
-        if(cursor == null){
-            result = contentUri.getPath();
-        } else {
-            cursor.moveToFirst();
-            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(idx);
-            cursor.close();
-        }
-
-        return result;
-    }
-
 
 
 }
