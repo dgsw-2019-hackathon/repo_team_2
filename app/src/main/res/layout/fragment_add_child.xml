@@ -165,16 +165,14 @@
             android:id="@+id/confirmAdd"
             android:layout_width="75dp"
             android:layout_height="32dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/login_button_line"
             android:text="등록"
             android:textColor="#fff"
             android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/missingLocation"
+            app:layout_constraintEnd_toEndOf="@+id/detailContents"
+            app:layout_constraintStart_toStartOf="@+id/detailContents"
+            app:layout_constraintTop_toBottomOf="@+id/detailContents"
             tools:ignore="HardcodedText,MissingConstraints" />
 
         <TextView
@@ -202,6 +200,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/placeText"
             tools:ignore="Autofill,LabelFor,MissingConstraints,TextFields" />
+
+        <TextView
+            android:id="@+id/contentsText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="상세 내용"
+            android:textColor="#000"
+            android:textSize="8pt"
+            app:layout_constraintEnd_toEndOf="@+id/missingLocation"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/missingLocation"
+            app:layout_constraintTop_toBottomOf="@+id/missingLocation"
+            tools:ignore="MissingConstraints" />
+
+        <EditText
+            android:id="@+id/detailContents"
+            android:layout_width="350dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="12dp"
+            android:hint="신체 특징, 실종 시간 등을 작성"
+            app:layout_constraintEnd_toEndOf="@+id/contentsText"
+            android:background="@drawable/text_border_gray"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/contentsText"
+            app:layout_constraintTop_toBottomOf="@+id/contentsText"
+            tools:ignore="MissingConstraints" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
