@@ -113,25 +113,16 @@ public class ChildListviewActivity extends Fragment {
 
             Intent intent = new Intent(getContext().getApplicationContext(), ShowChildInfo.class);
 
-//            String childImage = childList.get(0).toString();
-//            String childName = childList.get(1).toString();
-//            String childSex = childList.get(2).toString();
-//            String childPlace = childList.get(3).toString();
-//            String childAge = childList.get(4).toString();
-//            String childHeight = childList.get(5).toString();
-//            String childWeight = childList.get(6).toString();
-//
-//            intent.putExtra("childImage", childImage);
-//            intent.putExtra("childName", childName);
-//            intent.putExtra("childSex", childSex);
-//            intent.putExtra("childPlace", childPlace);
-//            intent.putExtra("childAge", childAge);
-//            intent.putExtra("childHeight", childHeight);
-//            intent.putExtra("childWeight", childWeight);
-//
-//            startActivityForResult(intent, 1000);
+            intent.putExtra("childName", childName);
+            intent.putExtra("childAge", childAge);
+            intent.putExtra("childSex", childSex);
+            intent.putExtra("phoneNumber", phonNumber);
+            intent.putExtra("childHeight", childHeight);
+            intent.putExtra("childWeight", childWeight);
+            intent.putExtra("place", place);
+            intent.putExtra("detailContents", contents);
 
-            startActivity(intent);
+            startActivityForResult(intent, 1002);
         });
 
         return view;

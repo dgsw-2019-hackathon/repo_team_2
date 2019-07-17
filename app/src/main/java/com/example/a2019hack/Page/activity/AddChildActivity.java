@@ -199,6 +199,7 @@ public class AddChildActivity extends AppCompatActivity implements NumberPicker.
             @Override
             public void onPermissionGranted() {
 
+                //getImageUri();
             }
 
             @Override
