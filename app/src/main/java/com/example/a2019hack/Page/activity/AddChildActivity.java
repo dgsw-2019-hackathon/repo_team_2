@@ -1,8 +1,6 @@
 package com.example.a2019hack.Page.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 import android.Manifest;
 import android.content.Intent;
@@ -16,21 +14,24 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.NumberPicker;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.a2019hack.Page.fragment.ChildListviewActivity;
+import com.example.a2019hack.Page.fragment.picker.NumberPickerFragment_height;
+import com.example.a2019hack.Page.fragment.picker.NumberPickerFragment_weight;
 import com.example.a2019hack.R;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
 import java.util.ArrayList;
 
-public class AddChildActivity extends AppCompatActivity {
+public class AddChildActivity extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
 
     String [] item = new String[19];
     String name, call, place, age; // 저장한 데이터들
     String sex = "남자";
+    String contents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +55,7 @@ public class AddChildActivity extends AppCompatActivity {
         EditText childName = findViewById(R.id.add_child_nameText);
         EditText callNumber = findViewById(R.id.parentPhoneNumber);
         EditText missingPlace = findViewById(R.id.missingLocation);
+        EditText detailContents = findViewById(R.id.detailContents);
 
         // 나이 콤보박스 및 선택 시 이벤트
         for(int i=0;i<item.length;i++) {
@@ -110,11 +112,23 @@ public class AddChildActivity extends AppCompatActivity {
             }
         });
 
+        heightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                NumberPickerFragment_height numberPickerFragment_height = new NumberPickerFragment_height();
+                numberPickerFragment_height.setValueChangeListener(AddChildActivity.this);
+                numberPickerFragment_height.show(getSupportFragmentManager(), "number picker");
+            }
+        });
+
         weightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-
+                NumberPickerFragment_weight numberPickerFragment_weight = new NumberPickerFragment_weight();
+                numberPickerFragment_weight.setValueChangeListener(AddChildActivity.this);
+                numberPickerFragment_weight.show(getSupportFragmentManager(), "number picker");
             }
         });
 
@@ -150,6 +164,10 @@ public class AddChildActivity extends AppCompatActivity {
             name = childName.getText().toString();
             call = callNumber.getText().toString();
             place = missingPlace.getText().toString();
+            contents = detailContents.getText().toString();
+
+            String childHeight = heightButton.getText().toString();
+            String childWeight = weightButton.getText().toString();
 
             if(name.equals("") || call.equals("") || ageSpinner.getSelectedItem().equals("")) {
 
@@ -159,12 +177,18 @@ public class AddChildActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "모든 항목이 입력되었습니다.", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getApplicationContext(), ChildListviewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
                 intent.putExtra("childName", name);
                 intent.putExtra("childAge", age);
                 intent.putExtra("childSex", sex);
                 intent.putExtra("phoneNumber", call);
+                intent.putExtra("childHeight", childHeight);
+                intent.putExtra("childWeight", childWeight);
+                intent.putExtra("place", place);
+                intent.putExtra("detailContents", contents);
+
+                startActivityForResult(intent, 1000);
             }
         });
     }
@@ -210,5 +234,10 @@ public class AddChildActivity extends AppCompatActivity {
         }
 
         return result;
+    }
+
+    @Override
+    public void onValueChange(NumberPicker picker, int oldVal, int newVal) {
+
     }
 }

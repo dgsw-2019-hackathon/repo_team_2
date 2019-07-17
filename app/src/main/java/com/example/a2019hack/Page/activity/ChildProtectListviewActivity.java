@@ -1,6 +1,5 @@
-package com.example.a2019hack.Page.fragment;
+package com.example.a2019hack.Page.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -13,11 +12,8 @@ import android.widget.ListView;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.a2019hack.Page.activity.ShowChildInfo;
 import com.example.a2019hack.R;
-import com.example.a2019hack.adapter.ChildFindListviewAdapter;
 import com.example.a2019hack.adapter.ChildProtectListviewAdapter;
-import com.example.a2019hack.data.Child;
 import com.example.a2019hack.data.ChildProtect;
 
 import java.util.ArrayList;

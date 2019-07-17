@@ -1,23 +1,19 @@
-package com.example.a2019hack.Page.fragment;
+package com.example.a2019hack.Page.activity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.a2019hack.Page.activity.ShowChildInfo;
 import com.example.a2019hack.R;
 import com.example.a2019hack.adapter.ChildFindListviewAdapter;
 import com.example.a2019hack.data.Child;
-import com.example.a2019hack.data.ChildProtect;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -89,25 +85,23 @@ public class ChildListviewActivity extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_child_find_listview, container, false);
 
+        Intent intents = getActivity().getIntent();
+
+        String childName = intents.getStringExtra("childName");
+        String childAge = intents.getStringExtra("childAge");
+        String childSex = intents.getStringExtra("childSex");
+        String phonNumber = intents.getStringExtra("phoneNumber");
+        String childHeight = intents.getStringExtra("childHeight");
+        String childWeight = intents.getStringExtra("childWeight");
+        String place = intents.getStringExtra("place");
+        String contents = intents.getStringExtra("detailContents");
+
         childList = new ArrayList<>();
 
         childListView = view.findViewById(R.id.childListview);
 
         childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
-        childList.add(new Child(
-                R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
-
+                R.drawable.child_image, childName, childSex, place, childAge, childHeight, childWeight));
 
         Collections.reverse(childList);
 

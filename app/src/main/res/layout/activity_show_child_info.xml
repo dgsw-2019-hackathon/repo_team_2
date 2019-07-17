@@ -212,11 +212,14 @@
                 android:id="@+id/showChileDetailContentsText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
                 android:text="상세내용"
                 android:textColor="#000"
                 android:textSize="10pt"
-                tools:layout_editor_absoluteX="16dp"
-                tools:layout_editor_absoluteY="88dp" />
+                app:layout_constraintEnd_toEndOf="@+id/parentCallText"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/parentCallText"
+                app:layout_constraintTop_toBottomOf="@+id/parentCallText" />
 
             <TextView
                 android:id="@+id/detailContentsText"
