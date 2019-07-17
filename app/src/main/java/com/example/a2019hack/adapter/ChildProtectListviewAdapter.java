@@ -53,6 +53,8 @@ public class ChildProtectListviewAdapter extends BaseAdapter {
         final ChildProtect childProtect = childProtectList.get(position);
 
         final ImageView childPhoto = convertView.findViewById(R.id.childPhoto);
+        final ImageView pin = convertView.findViewById(R.id.pin);
+
         final TextView childName = convertView.findViewById(R.id.childName);
         final TextView childSex = convertView.findViewById(R.id.childSex);
         final TextView childAge = convertView.findViewById(R.id.childAge);
@@ -61,6 +63,8 @@ public class ChildProtectListviewAdapter extends BaseAdapter {
         final TextView childWeight = convertView.findViewById(R.id.childWeight);
 
         childPhoto.setImageResource(R.drawable.child_image);
+        pin.setImageResource(R.drawable.pin);
+
         childName.setText(childProtect.getChildProtectName());
         childSex.setText(childProtect.getChildProtectSex());
         childAge.setText(childProtect.getChildProtectAge());

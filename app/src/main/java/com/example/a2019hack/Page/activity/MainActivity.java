@@ -3,16 +3,13 @@ package com.example.a2019hack.Page.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.a2019hack.Page.fragment.AddChildFragment;
 import com.example.a2019hack.Page.fragment.MainPageFragment;
 import com.example.a2019hack.Page.fragment.MyPageFragment;
 import com.example.a2019hack.Page.fragment.SearchFragment;
@@ -110,12 +107,8 @@ public class MainActivity extends AppCompatActivity {
             searchButtonText.setVisibility(View.INVISIBLE);
             peopleButtonText.setVisibility(View.INVISIBLE);
 
-            FragmentManager fragmentManager = getSupportFragmentManager();
-
-            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-
-            fragmentTransaction.replace(R.id.fragmentMain, new AddChildFragment());
-            fragmentTransaction.commit();
+            Intent intent = new Intent(getApplicationContext(), AddChildActivity.class);
+            startActivity(intent);
         });
     }
 

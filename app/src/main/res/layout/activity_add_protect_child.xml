@@ -14,13 +14,42 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <Button
+            android:id="@+id/changeFindButton3"
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/find_button_radius"
+            android:text="실종 아동"
+            android:textStyle="bold"
+            android:clickable="false"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/changeProtectButton3"
+            android:layout_width="85dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/protect_button_radius"
+            android:clickable="false"
+            android:text="보호 아동"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText,MissingConstraints" />
+
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="40dp"
             android:layout_marginTop="20dp"
-            android:text="실종아동 등록"
+            android:text="보호아동 등록"
             android:textColor="@color/black"
             android:textSize="10pt"
             android:textStyle="bold"
@@ -143,7 +172,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
             android:layout_marginTop="48dp"
-            android:text="보호자 전화번호"
+            android:text="임시 보호자 전화번호"
             android:textColor="#000"
             android:textSize="8pt"
             app:layout_constraintStart_toStartOf="parent"
@@ -166,7 +195,7 @@
             android:id="@+id/confirmAdd"
             android:layout_width="75dp"
             android:layout_height="32dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="22dp"
             android:background="@drawable/login_button_line"
             android:text="등록"
             android:textColor="#fff"
@@ -181,14 +210,13 @@
             android:id="@+id/placeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:text="실종 위치"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="20dp"
+            android:text="보호 중인 위치"
             android:textColor="#000"
             android:textSize="8pt"
-            app:layout_constraintEnd_toEndOf="@+id/heightAndWeight"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/heightAndWeight"
-            app:layout_constraintTop_toBottomOf="@+id/heightAndWeight"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/parentPhoneNumber"
             tools:ignore="HardcodedText,MissingConstraints" />
 
         <EditText
@@ -204,7 +232,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/placeText"
-            tools:ignore="Autofill,LabelFor,MissingConstraints,TextFields" />
+            tools:ignore="Autofill,HardcodedText,LabelFor,MissingConstraints,TextFields" />
 
         <TextView
             android:id="@+id/contentsText"
@@ -218,7 +246,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/missingLocation"
             app:layout_constraintTop_toBottomOf="@+id/missingLocation"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="HardcodedText,MissingConstraints" />
 
         <EditText
             android:id="@+id/detailContents"
@@ -232,21 +260,7 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/contentsText"
             app:layout_constraintTop_toBottomOf="@+id/contentsText"
-            tools:ignore="MissingConstraints" />
-
-        <TextView
-            android:id="@+id/heightAndWeight"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="키 / 몸무게"
-            android:textColor="#000"
-            android:textSize="8pt"
-            app:layout_constraintEnd_toEndOf="@+id/parentPhoneNumber"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/parentPhoneNumber"
-            app:layout_constraintTop_toBottomOf="@+id/parentPhoneNumber"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="Autofill,HardcodedText,MissingConstraints,TextFields" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

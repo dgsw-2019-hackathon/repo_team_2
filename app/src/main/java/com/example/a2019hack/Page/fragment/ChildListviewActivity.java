@@ -86,18 +86,12 @@ public class ChildListviewActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_child_find_listview, container, false);
-    }
 
-    //-----------------------------------------------------------------
-
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+        View view =  inflater.inflate(R.layout.fragment_child_find_listview, container, false);
 
         childList = new ArrayList<>();
 
-        childListView = getView().findViewById(R.id.childListview);
+        childListView = view.findViewById(R.id.childListview);
 
         childList.add(new Child(
                 R.drawable.child_image, "제정민", "남", "대구소프트웨어고 정문", "18", "185cm", "80kg"));
@@ -121,7 +115,7 @@ public class ChildListviewActivity extends Fragment {
 
         childListView.setAdapter(childFindListviewAdapter);
 
-        childListView.setOnItemClickListener((parent, view, position, id) -> {
+        childListView.setOnItemClickListener((parent, v, position, id) -> {
 
             Intent intent = new Intent(getContext().getApplicationContext(), ShowChildInfo.class);
 
@@ -145,6 +139,16 @@ public class ChildListviewActivity extends Fragment {
 
             startActivity(intent);
         });
+
+        return view;
+    }
+
+    //-----------------------------------------------------------------
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
     }
 
     //-----------------------------------------------------------------

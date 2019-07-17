@@ -79,6 +79,14 @@ public class MainPageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+        fragmentTransaction.replace(R.id.fragment, new ChildListviewActivity());
+        fragmentTransaction.commit();
+
         return inflater.inflate(R.layout.fragment_main_page, container, false);
     }
 
