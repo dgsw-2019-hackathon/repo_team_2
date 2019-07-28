@@ -88,36 +88,36 @@ public class SearchFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        SearchView searchView = getActivity().findViewById(R.id.search);
-
-        ImageView noSearchImage = getActivity().findViewById(R.id.noSearchResultImage);
-        TextView noSearchText = getActivity().findViewById(R.id.noSearchResultText);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-
-            // 검색 버튼이 눌러졌을떄
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                query =  searchView.getQuery().toString();
-
-                if(query.equals("")){ // 검색결과가 없으면 if문 수정
-                    noSearchImage.setVisibility(View.VISIBLE);
-                    noSearchText.setVisibility(View.VISIBLE);
-                } else { // 검색결과가 있으면
-                    noSearchImage.setVisibility(View.INVISIBLE);
-                    noSearchText.setVisibility(View.INVISIBLE);
-                }
-                return false;
-            }
-
-            // 검색어가 변경되었을 때
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                searchView.setQuery(searchView.getQuery(), true);
-
-                return false;
-            }
-        });
+//        SearchView searchView = getView().findViewById(R.id.search);
+//
+//        ImageView noSearchImage = getActivity().findViewById(R.id.noSearchResultImage);
+//        TextView noSearchText = getActivity().findViewById(R.id.noSearchResultText);
+//
+//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+//
+//            // 검색 버튼이 눌러졌을떄
+//            @Override
+//            public boolean onQueryTextSubmit(String query) {
+//                query =  searchView.getQuery().toString();
+//
+//                if(query.equals("")){ // 검색결과가 없으면 if문 수정
+//                    noSearchImage.setVisibility(View.VISIBLE);
+//                    noSearchText.setVisibility(View.VISIBLE);
+//                } else { // 검색결과가 있으면
+//                    noSearchImage.setVisibility(View.INVISIBLE);
+//                    noSearchText.setVisibility(View.INVISIBLE);
+//                }
+//                return false;
+//            }
+//
+//            // 검색어가 변경되었을 때
+//            @Override
+//            public boolean onQueryTextChange(String newText) {
+//                searchView.setQuery(searchView.getQuery(), true);
+//
+//                return false;
+//            }
+//        });
     }
 
     //--------------------------------------------------

@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
         searchButtonText = findViewById(R.id.searchButtonText);
         peopleButtonText = findViewById(R.id.peopleButtonText);
 
+        String a = getIntent().getStringExtra("childPhoto");
+
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

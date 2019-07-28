@@ -37,16 +37,19 @@ public class LoginActivity extends AppCompatActivity {
             loginId = idText.getText().toString();
             loginPassword = passwordText.getText().toString();
 
-            if (loginId.equals(userId) && loginPassword.equals(userPw)){
-
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//            if (loginId.equals(userId) && loginPassword.equals(userPw)){
+//
+//                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                startActivity(intent);
+//                Toast toast = Toast.makeText(getApplicationContext(), "로그인하였습니다.", Toast.LENGTH_LONG);
+//                toast.show();
+//            } else {
+//                Toast toast = Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG);
+//                toast.show();
+//            }
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-                Toast toast = Toast.makeText(getApplicationContext(), "로그인하였습니다.", Toast.LENGTH_LONG);
-                toast.show();
-            } else {
-                Toast toast = Toast.makeText(getApplicationContext(), "아이디 또는 비밀번호가 일치하지 않습니다.", Toast.LENGTH_LONG);
-                toast.show();
-            }
+
         });
 
         //회원가입 텍스트 클릭 리스너

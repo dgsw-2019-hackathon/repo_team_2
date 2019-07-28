@@ -1,49 +1,26 @@
 package com.example.a2019hack.Page.activity;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentTransaction;
-
-import com.example.a2019hack.Page.fragment.MainPageFragment;
 import com.example.a2019hack.R;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class ShowChildInfo extends AppCompatActivity implements OnMapReadyCallback {
-
-    private ImageView listButton;
-    private ImageView plusButton;
-    private ImageView searchButton;
-    private ImageView peopleButton;
-
-    private TextView listButtonText;
-    private TextView plusButtonText;
-    private TextView searchButtonText;
-    private TextView peopleButtonText;
-
-    private GoogleApiClient mGoogleApiClient = null;
-    private GoogleMap mGoogleMap = null;
-    private Marker currentMarker = null;
-
-    private static final String TAG = "googlemap_example";
-    private static final int GPS_ENABLE_REQUEST = 2001;
+public class ShowProtectChildInfo extends AppCompatActivity implements OnMapReadyCallback {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_child_info);
+        setContentView(R.layout.activity_show_protect_child_info);
 
         TextView childName = findViewById(R.id.childName);
         TextView childSex = findViewById(R.id.childSex);
@@ -56,7 +33,7 @@ public class ShowChildInfo extends AppCompatActivity implements OnMapReadyCallba
         FragmentManager fragmentManager = getFragmentManager();
         MapFragment mapFragment = (MapFragment)fragmentManager
                 .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+        mapFragment.getMapAsync((OnMapReadyCallback) this);
 
         Intent intent = getIntent();
 

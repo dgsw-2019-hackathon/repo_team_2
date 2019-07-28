@@ -28,6 +28,7 @@ public class AddProtectChildActivity extends AppCompatActivity {
     String [] item = new String[19];
     String name, call, place, age; // 저장한 데이터들
     String sex = "남자";
+    String contents;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,10 @@ public class AddProtectChildActivity extends AppCompatActivity {
         Button womanBtn = findViewById(R.id.womanButton);
         Button confirm = findViewById(R.id.confirmAdd);
 
-        Button weightButton = findViewById(R.id.weightButton);
-        Button heightButton = findViewById(R.id.heightButton);
-
         EditText childName = findViewById(R.id.add_child_nameText);
         EditText callNumber = findViewById(R.id.parentPhoneNumber);
         EditText missingPlace = findViewById(R.id.missingLocation);
+        EditText detailContents = findViewById(R.id.detailContents);
 
         for(int i=0;i<item.length;i++) {
 
@@ -135,9 +134,11 @@ public class AddProtectChildActivity extends AppCompatActivity {
 
         confirm.setOnClickListener(I -> {
 
+            String childPhotoId = image.toString();
             name = childName.getText().toString();
             call = callNumber.getText().toString();
             place = missingPlace.getText().toString();
+            contents = detailContents.getText().toString();
 
             if(name.equals("") || call.equals("")) {
 
@@ -147,12 +148,17 @@ public class AddProtectChildActivity extends AppCompatActivity {
 
                 Toast.makeText(getApplicationContext(), "모든 항목이 입력되었습니다.", Toast.LENGTH_LONG).show();
 
-                Intent intent = new Intent(getApplicationContext(), ChildListviewActivity.class);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
                 intent.putExtra("childName", name);
                 intent.putExtra("childAge", age);
                 intent.putExtra("childSex", sex);
                 intent.putExtra("phoneNumber", call);
+                intent.putExtra("phoneNumber", call);
+                intent.putExtra("place", place);
+                intent.putExtra("detailContents", contents);
+
+                startActivityForResult(intent, 1200);
             }
         });
     }

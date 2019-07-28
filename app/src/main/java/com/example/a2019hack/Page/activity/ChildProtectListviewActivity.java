@@ -13,7 +13,9 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.a2019hack.R;
+import com.example.a2019hack.adapter.ChildFindListviewAdapter;
 import com.example.a2019hack.adapter.ChildProtectListviewAdapter;
+import com.example.a2019hack.data.Child;
 import com.example.a2019hack.data.ChildProtect;
 
 import java.util.ArrayList;
@@ -83,6 +85,55 @@ public class ChildProtectListviewActivity extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
+        View view = inflater.inflate(R.layout.fragment_child_find_listview, container, false);
+
+        Intent intents = getActivity().getIntent();
+
+        String childPhoto = intents.getStringExtra("childPhoto");
+        String childName = intents.getStringExtra("childName");
+        String childAge = intents.getStringExtra("childAge");
+        String childSex = intents.getStringExtra("childSex");
+        String phonNumber = intents.getStringExtra("phoneNumber");
+        String childHeight = intents.getStringExtra("childHeight");
+        String childWeight = intents.getStringExtra("childWeight");
+        String place = intents.getStringExtra("place");
+        String contents = intents.getStringExtra("detailContents");
+
+        childProtectListView = view.findViewById(R.id.childListview);
+
+        childListProtect = new ArrayList<>();
+
+        childListProtect.add(new ChildProtect(
+                R.drawable.child_image_protect, childName, childSex, place, childAge, childHeight, childWeight));
+
+        Collections.reverse(childListProtect);
+
+        childProtectListviewAdapter = new ChildProtectListviewAdapter(Objects.requireNonNull(getContext()).getApplicationContext(), childListProtect);
+
+        childProtectListView.setAdapter(childProtectListviewAdapter);
+
+        childProtectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Intent intent = new Intent(getContext().getApplicationContext(), ShowProtectChildInfo.class);
+
+                intent.putExtra("childName", childName);
+                intent.putExtra("childAge", childAge);
+                intent.putExtra("childSex", childSex);
+                intent.putExtra("phoneNumber", phonNumber);
+                intent.putExtra("childHeight", childHeight);
+                intent.putExtra("childWeight", childWeight);
+                intent.putExtra("place", place);
+                intent.putExtra("detailContents", contents);
+
+                startActivityForResult(intent, 1003);
+
+                startActivity(intent);
+            }
+        });
+
         return inflater.inflate(R.layout.fragment_child_protect_listview, container, false);
     }
 
@@ -99,40 +150,6 @@ public class ChildProtectListviewActivity extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        childListProtect = new ArrayList<>();
-
-        childProtectListView = getView().findViewById(R.id.childProtectListview);
-
-        childListProtect.add(new ChildProtect(
-                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
-
-        childListProtect.add(new ChildProtect(
-                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
-
-        childListProtect.add(new ChildProtect(
-                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
-
-        childListProtect.add(new ChildProtect(
-                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
-
-        childListProtect.add(new ChildProtect(
-                R.drawable.child_image_protect, "김성헌", "남", "대구소프트웨어고 정문", "18", "170cm", "60kg"));
-
-
-        Collections.reverse(childListProtect);
-
-        childProtectListviewAdapter = new ChildProtectListviewAdapter(Objects.requireNonNull(getContext()).getApplicationContext(), childListProtect);
-
-        childProtectListView.setAdapter(childProtectListviewAdapter);
-
-        childProtectListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-                Intent intent = new Intent(getContext().getApplicationContext(), ShowChildInfo.class);
-                startActivity(intent);
-            }
-        });
     }
 
     //--------------------------------------------------------------

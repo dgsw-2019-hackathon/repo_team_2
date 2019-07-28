@@ -1,10 +1,13 @@
 package com.example.a2019hack.Page.activity;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.Manifest;
 import android.content.Intent;
 import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.media.Image;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -24,6 +27,7 @@ import com.example.a2019hack.R;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class AddChildActivity extends AppCompatActivity implements NumberPicker.OnValueChangeListener {
@@ -33,14 +37,38 @@ public class AddChildActivity extends AppCompatActivity implements NumberPicker.
     String sex = "남자";
     String contents;
 
+    private ImageView image;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode == 1 && resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+            Uri uri = data.getData();
+
+            try {
+
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
+                image.setImageBitmap(bitmap);
+            }
+            catch (IOException e) {
+
+                e.printStackTrace();
+            }
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_child);
 
+
+
         final Spinner ageSpinner = findViewById(R.id.ageSpinner);
 
-        ImageView image = findViewById(R.id.add_child_image);
+        image = findViewById(R.id.add_child_image);
 
         Button findChangeButton = findViewById(R.id.changeFindButton2);
         Button protectChangeButton = findViewById(R.id.changeProtectButton2);
@@ -56,6 +84,7 @@ public class AddChildActivity extends AppCompatActivity implements NumberPicker.
         EditText callNumber = findViewById(R.id.parentPhoneNumber);
         EditText missingPlace = findViewById(R.id.missingLocation);
         EditText detailContents = findViewById(R.id.detailContents);
+
 
         // 나이 콤보박스 및 선택 시 이벤트
         for(int i=0;i<item.length;i++) {
@@ -161,6 +190,7 @@ public class AddChildActivity extends AppCompatActivity implements NumberPicker.
 
         confirm.setOnClickListener(I -> {
 
+            String childPhotoId = image.toString();
             name = childName.getText().toString();
             call = callNumber.getText().toString();
             place = missingPlace.getText().toString();
@@ -179,6 +209,7 @@ public class AddChildActivity extends AppCompatActivity implements NumberPicker.
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
 
+                intent.putExtra("childPhoto", childPhotoId);
                 intent.putExtra("childName", name);
                 intent.putExtra("childAge", age);
                 intent.putExtra("childSex", sex);
@@ -200,6 +231,12 @@ public class AddChildActivity extends AppCompatActivity implements NumberPicker.
             public void onPermissionGranted() {
 
                 //getImageUri();
+                Intent intent = new Intent();
+                intent.setType("image/*");
+                intent.setAction(Intent.ACTION_GET_CONTENT);
+
+                startActivityForResult(Intent.createChooser(intent, "Select Picture"), 1);
+
             }
 
             @Override

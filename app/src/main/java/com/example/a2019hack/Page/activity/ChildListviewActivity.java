@@ -1,11 +1,14 @@
 package com.example.a2019hack.Page.activity;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import androidx.annotation.Nullable;
@@ -15,6 +18,7 @@ import com.example.a2019hack.R;
 import com.example.a2019hack.adapter.ChildFindListviewAdapter;
 import com.example.a2019hack.data.Child;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Objects;
@@ -83,10 +87,16 @@ public class ChildListviewActivity extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
+        ImageView childPhotos = getActivity().findViewById(R.id.childPhoto);
+
+        if(childPhotos != null)
+            childPhotos.setImageResource(R.drawable.logo);
+
         View view =  inflater.inflate(R.layout.fragment_child_find_listview, container, false);
 
         Intent intents = getActivity().getIntent();
 
+        String childPhoto = intents.getStringExtra("childPhoto");
         String childName = intents.getStringExtra("childName");
         String childAge = intents.getStringExtra("childAge");
         String childSex = intents.getStringExtra("childSex");
@@ -100,8 +110,9 @@ public class ChildListviewActivity extends Fragment {
 
         childListView = view.findViewById(R.id.childListview);
 
+
         childList.add(new Child(
-                R.drawable.child_image, childName, childSex, place, childAge, childHeight, childWeight));
+                childPhoto, childName, childSex, place, childAge, childHeight, childWeight));
 
         Collections.reverse(childList);
 

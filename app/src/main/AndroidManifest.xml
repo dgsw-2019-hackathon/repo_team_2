@@ -16,17 +16,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
-        <activity android:name=".Page.activity.AddProtectChildActivity"></activity>
+        <activity android:name=".Page.activity.ShowProtectChildInfo"></activity>
+        <activity android:name=".Page.activity.AddProtectChildActivity" />
         <activity android:name=".Page.activity.AddChildActivity" />
         <activity android:name=".Page.activity.ShowChildInfo" />
         <activity android:name=".Page.activity.RegisterActivity" />
-        <activity android:name=".Page.activity.LoginActivity" />
-        <activity android:name=".Page.activity.MainActivity">
+        <activity android:name=".Page.activity.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Page.activity.MainActivity">
+
         </activity>
 
         <meta-data

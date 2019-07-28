@@ -62,7 +62,7 @@ public class ChildFindListviewAdapter extends BaseAdapter {
         final TextView childWeight = convertView.findViewById(R.id.childWeight);
 
         childPhoto.setImageResource(R.drawable.child_image);
-        pin.setImageResource(R.drawable.pin);;
+        pin.setImageResource(R.drawable.pin);
         childName.setText(child.getChildName());
         childSex.setText(child.getChildSex());
         childAge.setText(child.getChildAge());

@@ -30,16 +30,15 @@ public class RegisterActivity extends AppCompatActivity {
 
         confirm.setOnClickListener(I -> {
 
-            if (id.equals("") || pw.equals("") || email.equals("")) {
-
-                Toast.makeText(getApplicationContext(), "빈칸이 존재합니다. 빈칸을 채워주세요.", Toast.LENGTH_LONG).show();
-            }
-            if (id.equals("ys0216")) {
+//            if (id.equals("") || pw.equals("") || email.equals("")) {
+//
+//                Toast.makeText(getApplicationContext(), "빈칸이 존재합니다. 빈칸을 채워주세요.", Toast.LENGTH_LONG).show();
+//            }
+            if (id.equals("user1234")) {
 
                 Toast.makeText(getApplicationContext(), "이미 등록된 아이디 입니다.", Toast.LENGTH_LONG).show();
             }
 
-            //if(id != "ys0216" && pw.equals("1234"))
         });
     }
 }

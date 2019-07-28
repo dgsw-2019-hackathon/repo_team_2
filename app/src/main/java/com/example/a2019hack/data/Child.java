@@ -1,8 +1,11 @@
 package com.example.a2019hack.data;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
+
 public class Child {
 
-    private int childPhoto;
+    private String childPhoto;
 
     private String childWeight;
     private String childHeight;
@@ -12,7 +15,7 @@ public class Child {
     private String childPlace;
     private String childAge;
 
-    public Child(int childPhoto, String childName, String childSex, String childPlace, String childAge, String childHeight, String childWeight) {
+    public Child(String childPhoto, String childName, String childSex, String childPlace, String childAge, String childHeight, String childWeight) {
 
         this.childPhoto = childPhoto;
         this.childName = childName;
@@ -23,12 +26,12 @@ public class Child {
         this.childWeight = childWeight;
     }
 
-    public int getChildPhoto() {
+    public String getChildPhoto() {
 
         return childPhoto;
     }
 
-    public void setChildPhoto(int childPhoto) {
+    public void setChildPhoto(String childPhoto) {
 
         this.childPhoto = childPhoto;
     }
